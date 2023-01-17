@@ -4,6 +4,7 @@ import socket
 import struct
 import time
 import platform
+import subprocess
 
 # Function to change the current working directory
 def cd(path):
@@ -78,6 +79,18 @@ def set_bg_color(color):
 def reset_colors():
     print("\033[0m", end="")
 
+# Function to run a script
+def run_script(script_path):
+    subprocess.call(["python", script_path])
+
+# Function to install a package
+def install_package(package_name):
+    subprocess.call(["pip", "install", package_name])
+
+# Function to uninstall a package
+def uninstall_package(package_name):
+    subprocess.call(["pip", "uninstall", package_name])
+
 # Function to print a list of commands and their descriptions
 def print_help():
     print("Commands:")
@@ -99,7 +112,7 @@ def print_help():
 # Main loop
 while True:
     # Display the command prompt
-    sys.stdout.write("VOS> ")
+    sys.stdout.write("Vt> ")
     sys.stdout.flush()
 
     # Read the command from the user
@@ -125,8 +138,14 @@ while True:
         set_text_color(words[1])
     elif words[0] == "bgcolor":
         set_bg_color(words[1])
-    elif words[0] == "reset":
+    elif words[0] == "reset":   
         reset_colors()
+    elif words[0] == "run":
+     run_script(words[1])
+    elif words[0] == "install":
+      install_package(words[1])
+    elif words[0] == "uninstall":
+       uninstall_package(words[1])
     elif words[0] == "ls":
         if len(words) > 1:
             ls(words[1])
