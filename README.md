@@ -17,6 +17,8 @@ This script is a virtual operating system shell that allows users to execute var
     reset: resets the text and background colors to their defaults
     help: displays a list of commands and their descriptions
     exit: exits the VOS shell
+    
+![image](https://user-images.githubusercontent.com/77242455/212975271-f885db10-b834-425d-8f2d-7c452bb06710.png)
 
 The script uses various Python modules such as os, sys, and struct, and also uses ANSI escape codes to change the text and background colors.
 It loops indefinitely, prompting the user for input, and then executing the appropriate function based on the input.
